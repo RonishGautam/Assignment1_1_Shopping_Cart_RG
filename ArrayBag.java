@@ -39,6 +39,7 @@ public class ArrayBag<T> {
             numberOfEntries++;
             return true;
         } else {
+        	
             return false; // Logic to expand array can be added here if needed.
         }
     }
@@ -53,8 +54,11 @@ public class ArrayBag<T> {
         for (int i = 0; i < numberOfEntries; i++) {
             if (bag[i].equals(entry)) {
                 bag[i] = bag[numberOfEntries - 1];
-                bag[numberOfEntries - 1] = null;
+                
+               bag[numberOfEntries - 1] = null;
                 numberOfEntries--;
+                
+                
                 return true;
             }
         }
@@ -66,6 +70,7 @@ public class ArrayBag<T> {
      */
     public void clear() {
         for (int i = 0; i < numberOfEntries; i++) {
+        	
             bag[i] = null;
         }
         numberOfEntries = 0;
@@ -89,7 +94,9 @@ public class ArrayBag<T> {
     public int getFrequencyOf(T entry) {
         int count = 0;
         for (int i = 0; i < numberOfEntries; i++) {
+        	
             if (bag[i].equals(entry)) {
+            	
                 count++;
             }
         }
@@ -104,8 +111,10 @@ public class ArrayBag<T> {
      */
     public boolean contains(T entry) {
         for (int i = 0; i < numberOfEntries; i++) {
+        	
             if (bag[i].equals(entry)) {
-                return true;
+           
+            	return true;
             }
         }
         return false;
@@ -118,14 +127,16 @@ public class ArrayBag<T> {
      * @return An array of all items from the bag.
      */
     @SuppressWarnings("unchecked")
-    public T[] toArray(T[] a) {
-        if (a.length < numberOfEntries) {
-            return (T[]) Arrays.copyOf(bag, numberOfEntries, a.getClass());
+    public T[] toArray(T[] array) {
+        if (array.length < numberOfEntries) {
+            return (T[]) Arrays.copyOf(bag, numberOfEntries, array.getClass());
         }
-        System.arraycopy(bag, 0, a, 0, numberOfEntries);
-        if (a.length > numberOfEntries) {
-            a[numberOfEntries] = null;
+        
+        
+        System.arraycopy(bag, 0, array, 0, numberOfEntries);
+        if (array.length > numberOfEntries) {
+            array[numberOfEntries] = null;
         }
-        return a;
+        return array;
     }
 }
